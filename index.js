@@ -18,22 +18,24 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          "'unsafe-inline'",
-          "https://accounts.spotify.com",
-        ],
-        connectSrc: ["'self'", "https://api.spotify.com"],
-        imgSrc: ["'self'", "data:", "https://i.scdn.co"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-      },
-    },
-    crossOriginEmbedderPolicy: false,
-  })
+    helmet({
+        contentSecurityPolicy: {
+            directives: {
+                defaultSrc: ["'self'"],
+                scriptSrc: [
+                    "'self'",
+                    "'unsafe-inline'",
+                    "https://accounts.spotify.com",
+                ],
+                scriptSrcAttr: ["'unsafe-inline'"],  
+                connectSrc: ["'self'", "https://api.spotify.com"],
+                imgSrc: ["'self'", "data:", "https://i.scdn.co"],
+                styleSrc: ["'self'", "'unsafe-inline'"],
+            },
+        },
+        crossOriginEmbedderPolicy: false,
+    }),
+
 );
 
 app.use(compression());
