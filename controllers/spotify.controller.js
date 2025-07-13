@@ -1,15 +1,12 @@
-// --- controllers/spotify.controller.js ------------------------
-import {
+ import {
     getTopTracks,
     getCurrentlyPlaying,
     stopPlayback,
     startPlayback,
-} from "../models/spotify.model.js";
+} from "../models/spotify.model.js"; 
 
-/* helper ----------------------------------------------------- */
 const pickBearer = (req) => req.headers.authorization?.split(" ")[1];
 
-/* GET /spotify ------------------------------------------------ */
 export const getDashboard = async (req, res, next) => {
     try {
         const userToken = pickBearer(req);
@@ -41,7 +38,7 @@ export const getDashboard = async (req, res, next) => {
     }
 };
 
-/* POST /spotify/stop ----------------------------------------- */
+ 
 export const stopPlaybackController = async (req, res, next) => {
     try {
         const userToken = pickBearer(req);
@@ -54,7 +51,7 @@ export const stopPlaybackController = async (req, res, next) => {
     }
 };
 
-/* POST /spotify/play ----------------------------------------- */
+ 
 export const startPlaybackController = async (req, res, next) => {
     try {
         const userToken = pickBearer(req);
