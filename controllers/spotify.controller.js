@@ -45,10 +45,18 @@ export const spotifyCallback = async (req, res, next) => {
       }
     );
 
-    res.json({
-      access_token: data.access_token,
-      refresh_token: data.refresh_token,
-    });
+    res
+      .cookie("access_token", data.access_token, {
+        httpOnly: true,
+        secure: false,
+        maxAge: 3600 * 1000,
+      })
+      .cookie("refresh_token", data.refresh_token, {
+        httpOnly: true,
+        secure: false,
+        maxAge: 7 * 24 * 3600 * 1000,
+      })
+      .send("Login successful! Tokens are set in cookies.");
   } catch (err) {
     next(err);
   }

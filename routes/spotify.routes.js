@@ -6,7 +6,7 @@ import {
   loginSpotify,
   spotifyCallback,
 } from "../controllers/spotify.controller.js";
-import { requireToken } from "../middlewares/require.toke.js";
+import { requireToken } from "../middlewares/require.token.js";
 
 const router = express.Router();
 
