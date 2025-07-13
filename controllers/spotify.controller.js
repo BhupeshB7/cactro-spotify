@@ -7,7 +7,7 @@ import {
 } from "../models/spotify.model.js";
 import dotenv from "dotenv";
 import qs from "querystring";
-dotenv.config(); 
+dotenv.config();
 export const loginSpotify = (req, res) => {
   const scope = [
     "user-read-playback-state",
@@ -47,15 +47,15 @@ export const spotifyCallback = async (req, res, next) => {
     res
       .cookie("access_token", data.access_token, {
         httpOnly: true,
-        secure: false,
+        secure: true,
         maxAge: 3600 * 1000,
       })
       .cookie("refresh_token", data.refresh_token, {
         httpOnly: true,
-        secure: false,
+        secure: true,
         maxAge: 7 * 24 * 3600 * 1000,
       })
-      .send("Login successful! Tokens are set in cookies.");
+      .redirec("/spotify");
   } catch (err) {
     next(err);
   }
@@ -63,7 +63,7 @@ export const spotifyCallback = async (req, res, next) => {
 
 export const getDashboard = async (req, res, next) => {
   try {
-      const userToken = req.userToken;
+    const userToken = req.userToken;
     if (!userToken)
       return res.status(401).json({ error: "Access token required" });
 
@@ -95,7 +95,7 @@ export const getDashboard = async (req, res, next) => {
 
 export const stopPlaybackController = async (req, res, next) => {
   try {
-      const userToken = req.userToken;
+    const userToken = req.userToken;
     if (!userToken)
       return res.status(401).json({ error: "Access token required" });
 
@@ -108,7 +108,7 @@ export const stopPlaybackController = async (req, res, next) => {
 
 export const startPlaybackController = async (req, res, next) => {
   try {
-      const userToken = req.userToken;
+    const userToken = req.userToken;
     const { trackUri } = req.body;
 
     if (!userToken)

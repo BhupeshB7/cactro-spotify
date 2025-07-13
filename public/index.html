@@ -1,0 +1,22 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cactro Spotify Auth</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cactro Spotify Integration</h1>
+      <p>Login to access your top tracks and current playback!</p>
+      <button onclick="loginSpotify()">Login with Spotify</button>
+    </div>
+
+    <script>
+      function loginSpotify() {
+        window.location.href = "/api/spotify/login";
+      }
+    </script>
+  </body>
+</html>
