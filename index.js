@@ -12,6 +12,10 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static("public"));
+app.get("/", (req, res) => {
+    res.sendFile("index.html", { root: "public" });
+});
+
 // app.get("/", (req, res) => res.send("Welcome to the Cactro Spotify API"));
 app.use("/api/spotify", spotifyRoutes);
 

@@ -55,7 +55,7 @@ export const spotifyCallback = async (req, res, next) => {
         secure: true,
         maxAge: 7 * 24 * 3600 * 1000,
       })
-      .redirect("/spotify");
+      .redirect("/api/spotify");
   } catch (err) {
     next(err);
   }
