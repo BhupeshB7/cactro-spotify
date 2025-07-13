@@ -6,6 +6,7 @@ import {
   startPlayback,
 } from "../models/spotify.model.js";
 import dotenv from "dotenv";
+import qs from "querystring";
 dotenv.config();
 const pickBearer = (req) => req.headers.authorization?.split(" ")[1];
 export const loginSpotify = (req, res) => {
