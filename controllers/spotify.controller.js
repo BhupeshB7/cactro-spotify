@@ -7,8 +7,7 @@ import {
 } from "../models/spotify.model.js";
 import dotenv from "dotenv";
 import qs from "querystring";
-dotenv.config();
-const pickBearer = (req) => req.headers.authorization?.split(" ")[1];
+dotenv.config(); 
 export const loginSpotify = (req, res) => {
   const scope = [
     "user-read-playback-state",
@@ -64,7 +63,7 @@ export const spotifyCallback = async (req, res, next) => {
 
 export const getDashboard = async (req, res, next) => {
   try {
-    const userToken = pickBearer(req);
+      const userToken = req.userToken;
     if (!userToken)
       return res.status(401).json({ error: "Access token required" });
 
@@ -96,7 +95,7 @@ export const getDashboard = async (req, res, next) => {
 
 export const stopPlaybackController = async (req, res, next) => {
   try {
-    const userToken = pickBearer(req);
+      const userToken = req.userToken;
     if (!userToken)
       return res.status(401).json({ error: "Access token required" });
 
@@ -109,7 +108,7 @@ export const stopPlaybackController = async (req, res, next) => {
 
 export const startPlaybackController = async (req, res, next) => {
   try {
-    const userToken = pickBearer(req);
+      const userToken = req.userToken;
     const { trackUri } = req.body;
 
     if (!userToken)
